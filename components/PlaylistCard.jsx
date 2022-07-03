@@ -3,9 +3,7 @@ import { useRecoilState } from 'recoil';
 import { playingTrackState, playState } from '../atoms/playerAtom';
 
 function PlaylistCard({ image, name, id, owner }) {
-    // console.log("here from cards", { image, id, name, owner });
     return (
-        // <div className='ml-56 py-4 space-y-8 md:max-w-5xl'>
         <div key={id}>
             <div className='h-62 w-48 hover:bg-gray-800 rounded-lg p-5'>
                 <img className='h-40 w-40 rounded object-cover mb-2' src={image} />
@@ -13,7 +11,6 @@ function PlaylistCard({ image, name, id, owner }) {
                 <h1 className='text-sm font-medium text-gray-500 text-center'>{owner}</h1>
             </div>
         </div>
-        // </div>
     )
 }
 

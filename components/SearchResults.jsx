@@ -93,7 +93,6 @@ function SearchResults({ spotifyApi, chooseTrack }) {
             id: playlist.id,
             name: playlist.name,
             uri: playlist.uri,
-            // images: playlist.images,
             image: playlist.images[0]?.url,
             owner: playlist.owner.display_name,
           }
@@ -113,7 +112,6 @@ function SearchResults({ spotifyApi, chooseTrack }) {
             id: artist.id,
             name: artist.name,
             uri: artist.uri,
-            // images: artist.images,
             image: artist.images[0]?.url,
             type: artist.type,
           }
@@ -126,11 +124,6 @@ function SearchResults({ spotifyApi, chooseTrack }) {
   useEffect(() => {
     if (!accessToken) return;
   })
-
-
-  // console.log("artist",artists)
-  // console.log("Initial playlists", initialPlaylists);
-  console.log(" playlists", playlists);
 
   return (
     <section className='bg-black ml-56 py-4 space-y-8 md:max-w-5xl flex-grow md:mr-2.5'>
@@ -166,17 +159,6 @@ function SearchResults({ spotifyApi, chooseTrack }) {
       </div>
 
       {/* Playlists */}
-      {/* <h1 className='text-xl font-bold text-white m-5'>Playlists</h1>
-      <div className='flex flex-row m-5 flex-wrap'>
-        {playlists.slice(0, 5).map((playlist) => (
-          <div className='h-62 w-48 hover:bg-gray-800 rounded-lg p-5'>
-            <img className='h-40 w-40 rounded object-cover' src={playlist.image} />
-            <h1 className='text-white font-medium text-center'>{playlist.name}</h1>
-            <h1 className='text-sm font-medium text-gray-500 text-center'>{playlist.owner}</h1>
-          </div>
-        ))}
-      </div> */}
-
       <h1 className='text-xl font-bold text-white m-5'>Playlists</h1>
       <div className='flex flex-row m-5 flex-wrap'>
         {playlists.length === 0 ?

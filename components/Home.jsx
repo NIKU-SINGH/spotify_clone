@@ -83,12 +83,6 @@ function Home({ spotifyApi }) {
             })
         }
     }, [accessToken])
-
-    // console.log("This is the user palylist", userPlaylists);
-    console.log("Recently Played", recentlyPlayed);
-    // console.log("Recommendations", recommendation);
-    // console.log("accesstoken",accessToken)
-    // console.log("THis is the user palylist",session);
     return (
         <>
             <div className=' bg-gradient-to-b from-yellow-500'>
@@ -132,13 +126,6 @@ function Home({ spotifyApi }) {
                 </div>
                 <div className='flex flex-row m-5 flex-wrap'>
                     {recentlyPlayed?.slice(0, 5).map((song) => (
-                        // <div
-                        //     key={song.track.id}
-                        //     className='h-62 w-48 hover:bg-gray-800 rounded-lg p-3 m-2'>
-                        //     <img className='h-40 w-40 rounded object-cover m-2' src={song.track.album.images[0].url} />
-                        //     <h1 className='text-white font-medium text-center'>{song.track.name}</h1>
-                        //     <h1 className='text-sm font-medium text-gray-500 text-center'>{playlist.owner}</h1>
-                        // </div>
                         <PlaylistCard id={song.id} name={song.name} image={song.image} owner={song.owner} />
                     ))}
                 </div>
@@ -150,13 +137,6 @@ function Home({ spotifyApi }) {
                 </div>
                 <div className='flex flex-row m-5 flex-wrap'>
                     {recommendation?.slice(0, 5).map((song) => (
-                        // <div
-                        //     key={song.id}
-                        //     className='h-62 w-48 hover:bg-gray-800 rounded-lg p-3 m-2'>
-                        //     <img className='h-40 w-40 rounded object-cover m-2' src={song.image} />
-                        //     <h1 className='text-white font-medium text-center'>{song.name}</h1>
-                        //     <h1 className='text-sm font-medium text-gray-500 text-center'>{playlist.owner}</h1>
-                        // </div>
                         <PlaylistCard id={song.id} name={song.name} image={song.image} owner={song.album.name} />
                     ))}
                 </div>

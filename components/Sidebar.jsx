@@ -41,8 +41,6 @@ function Sidebar({ spotifyApi }) {
     })
   }, [session, spotifyApi])
 
-  // console.log("User playsits sidebar", userPlaylists);
-
   return (
     <section className='bg-black fixed top-0 z-40 flex flex-col p-4 items-center overflow-y-scroll scrollbar-hide w-[220px] h-screen text-gray-500 text-xs lg:text-sm max-w-xs pb-36 md:inline'>
       <div className='space-y-4'>
@@ -97,11 +95,6 @@ function Sidebar({ spotifyApi }) {
             // onClick={() => setPlaylistsId(playlist.id)}
             className='cursor-pointer hover:text-white'>{playlist.name}</p>
         ))}
-
-
-
-
-
 
       </div>
     </section>
