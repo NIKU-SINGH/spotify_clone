@@ -8,8 +8,11 @@
   "dependencies": {
     "@heroicons/react": "^1.0.6",
     "@tailwindcss/forms": "^0.5.2",
+    "better-react-spinkit": "^2.0.4",
+    "lodash": "^4.17.21",
     "next": "latest",
     "next-auth": "^4.5.0",
+    "prop-types": "^15.8.1",
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
