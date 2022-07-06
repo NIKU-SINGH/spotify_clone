@@ -13,6 +13,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-icons": "^4.4.0",
+    "react-spotify-web-playback": "^0.10.0",
     "recoil": "^0.7.4",
     "spotify-web-api-node": "^5.0.2",
     "tailwind-scrollbar-hide": "^1.1.7"
