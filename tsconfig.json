@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/SearchResults.jsx", "components/Dashboard.jsx", "components/Right.jsx", "components/Sidebar.jsx", "pages/index.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "components/SearchResults.jsx", "components/Dashboard.jsx", "components/Right.jsx", "components/Sidebar.jsx", "pages/index.jsx", "pages/_app.tsx"],
   "exclude": ["node_modules"]
 }
