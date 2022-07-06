@@ -8,6 +8,7 @@ import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
 import Player from '../components/Player'
+import Loader from '../components/Loader' 
 
 const spotifyApi = new SpotifyWebApi({
     clientId: process.env.SPOTIFY_CLIENT_ID,
@@ -23,8 +24,11 @@ function search() {
             router.push('/auth/signin');
         },
     });
+    if (status === 'loading') {
+        return <Loader />;
+    }
     // const { data: session } = useSession();
-    const  accessToken  = session;
+    const accessToken = session;
     const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
 
     const chooseTrack = (track) => {

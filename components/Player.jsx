@@ -25,7 +25,6 @@ function Player({ accessToken, trackUri }) {
     }, [trackUri]);
 
     if (!accessToken) return null;
-    console.log("Am i being rendered ir not")
 
     return (
         <>
