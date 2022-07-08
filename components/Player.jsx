@@ -21,6 +21,9 @@ function Player({ accessToken, trackUri }) {
     useEffect(() => {
         if (trackUri) {
             setPlay(true);
+            if (track.uri === playTrack.uri) {
+                setPlay(!play);
+            }
         }
     }, [trackUri]);
 
