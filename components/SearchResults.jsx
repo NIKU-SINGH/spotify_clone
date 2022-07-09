@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil';
 import initialArtistsIdState from '../atoms/playerAtom'
 
 function SearchResults({ spotifyApi, chooseTrack }) {
-  const [search, setSearch] = useState("top-50");
+  const [search, setSearch] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
   const [newReleases, setNewReleases] = useState([]);
 
@@ -66,41 +66,41 @@ function SearchResults({ spotifyApi, chooseTrack }) {
   }, [accessToken]);
 
   // Get Initial Playlists
-  // useEffect(() => {
-  //   if (!accessToken) return;
+  useEffect(() => {
+    if (!accessToken) return;
 
-  //   spotifyApi.getFeaturedPlaylists({ limit: 10}).then((res) => {
-  //     setInitialPlaylists(
-  //       res.body.playlists.items.map((playlist) => {
-  //         return {
-  //           id: playlist.id,
-  //           name: playlist.name,
-  //           image: playlist.images[0].url,
-  //           uri: playlist.uri,
-  //           owner: playlist.owner
-  //         }
-  //       })
-  //     )
-  //   })
-  // }, [accessToken])
+    spotifyApi.getFeaturedPlaylists({ limit: 10}).then((res) => {
+      setInitialPlaylists(
+        res.body.playlists.items.map((playlist) => {
+          return {
+            id: playlist.id,
+            name: playlist.name,
+            image: playlist.images[0].url,
+            uri: playlist.uri,
+            owner: playlist.owner
+          }
+        })
+      )
+    })
+  }, [accessToken])
 
   // Searched Playlists
-  // useEffect(() => {
-  //   if (!accessToken) return;
-  //   spotifyApi.searchPlaylists(search).then((res) => {
-  //     setPlaylists(
-  //       res.body.playlists.items.map((playlist) => {
-  //         return {
-  //           id: playlist.id,
-  //           name: playlist.name,
-  //           uri: playlist.uri,
-  //           image: playlist.images[0]?.url,
-  //           owner: playlist.owner.display_name,
-  //         }
-  //       })
-  //     )
-  //   })
-  // }, [search, accessToken])
+  useEffect(() => {
+    if (!accessToken) return;
+    spotifyApi.searchPlaylists(search).then((res) => {
+      setPlaylists(
+        res.body.playlists.items.map((playlist) => {
+          return {
+            id: playlist.id,
+            name: playlist.name,
+            uri: playlist.uri,
+            image: playlist.images[0]?.url,
+            owner: playlist.owner.display_name,
+          }
+        })
+      )
+    })
+  }, [search, accessToken])
 
   // Search Artist
   useEffect(() => {
@@ -143,16 +143,12 @@ function SearchResults({ spotifyApi, chooseTrack }) {
     })
   }, [accessToken])
 
-  // console.log("Recent artist", initialArtists)
-  // console.log("artist",artists)
-
-
   return (
     <section className='bg-black ml-56 py-4 space-y-8 md:max-w-5xl flex-grow md:mr-2.5'>
       <Search search={search} setSearch={setSearch} />
       <div className='flex flex-row m-2 flex-wrap '>
         {/* Mapping through the results */}
-        {searchResults.length === 0 ? newReleases.slice(0, 5).map((track) => (
+        {searchResults?.length === 0 ? newReleases.slice(0, 5).map((track) => (
           <Poster
             id={track.id}
             track={track}
@@ -198,7 +194,7 @@ function SearchResults({ spotifyApi, chooseTrack }) {
       {/* Playlists */}
 
       <h1 className='text-xl font-bold text-white m-5'>Playlists</h1>
-      {/* <div className='flex flex-row m-5 flex-wrap'>
+      <div className='flex flex-row m-5 flex-wrap'>
         {playlists.length === 0 ?
           initialPlaylists.slice(0, 5).map((playlist,index) => (
             <PlaylistCard image={playlist.image} name={playlist.name} id={playlist.id} onwer={playlist.owner} key={index}/>
@@ -208,7 +204,7 @@ function SearchResults({ spotifyApi, chooseTrack }) {
             <PlaylistCard image={playlist.image} name={playlist.name} id={playlist.id} onwer={playlist.owner} key={index}/>
           ))
         }
-      </div> */}
+      </div>
 
     </section>
   )
