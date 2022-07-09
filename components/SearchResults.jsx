@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil';
 import initialArtistsIdState from '../atoms/playerAtom'
 
 function SearchResults({ spotifyApi, chooseTrack }) {
-  const [search, setSearch] = useState("pasoori");
+  const [search, setSearch] = useState("top-50");
   const [searchResults, setSearchResults] = useState([]);
   const [newReleases, setNewReleases] = useState([]);
 
