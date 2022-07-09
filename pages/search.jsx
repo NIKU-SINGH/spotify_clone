@@ -24,11 +24,12 @@ function search() {
             router.push('/auth/signin');
         },
     });
-    if (status === 'loading') {
-        return <Loader />;
-    }
+
+    // if (status === 'loading') {
+    //     return <Loader />;
+    // }
     // const { data: session } = useSession();
-    const accessToken = session;
+    const accessToken = session?.accessToken;
     const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
 
     const chooseTrack = (track) => {
@@ -39,8 +40,6 @@ function search() {
         if (!accessToken) return;
         spotifyApi.setAccessToken(accessToken);
     }, [accessToken]);
-
-
 
     return (
         <div className='text-white'>

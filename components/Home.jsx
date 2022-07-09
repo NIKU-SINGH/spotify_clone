@@ -125,8 +125,8 @@ function Home({ spotifyApi }) {
                     <h1>Rrecently Played</h1>
                 </div>
                 <div className='flex flex-row m-5 flex-wrap'>
-                    {recentlyPlayed?.slice(0, 5).map((song) => (
-                        <PlaylistCard id={song.id} name={song.name} image={song.image} owner={song.owner} />
+                    {recentlyPlayed?.slice(0, 5).map((song,index) => (
+                        <PlaylistCard id={song.id} name={song.name} image={song.image} owner={song.owner} key={index}/>
                     ))}
                 </div>
 
@@ -136,8 +136,8 @@ function Home({ spotifyApi }) {
                     <h1>Recommendation</h1>
                 </div>
                 <div className='flex flex-row m-5 flex-wrap'>
-                    {recommendation?.slice(0, 5).map((song) => (
-                        <PlaylistCard id={song.id} name={song.name} image={song.image} owner={song.album.name} />
+                    {recommendation?.slice(0, 5).map((song,index) => (
+                        <PlaylistCard id={song.id} name={song.name} image={song.image} owner={song.album.name} key={index} />
                     ))}
                 </div>
 

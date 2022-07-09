@@ -3,7 +3,7 @@ import { BsFile, BsFillPauseFill, BsFillPlayFill } from 'react-icons/bs';
 import { useRecoilState } from 'recoil';
 import { playingTrackState, playState } from '../atoms/playerAtom';
 
-function Poster({ key, track, chooseTrack }) {
+function Poster({ id, track, chooseTrack }) {
 
   const [play, setPlay] = useRecoilState(playState);
 
@@ -14,13 +14,14 @@ function Poster({ key, track, chooseTrack }) {
       setPlay(!play);
     }
   };
-  console.log("Current track",playingTrack);
+  // console.log("Current track",playingTrack);
 
   return (
     <div className='h-62 w-48 hover:bg-gray-800 rounded-lg p-5'>
       <div
         // className='h-auto w-auto'
         onClick={handlePlay}
+        key={id}
       >
         <div className='relative mb-2'>
           <img

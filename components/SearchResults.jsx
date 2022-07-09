@@ -8,7 +8,7 @@ import { useRecoilState } from 'recoil';
 import initialArtistsIdState from '../atoms/playerAtom'
 
 function SearchResults({ spotifyApi, chooseTrack }) {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState("top-50");
   const [searchResults, setSearchResults] = useState([]);
   const [newReleases, setNewReleases] = useState([]);
 
@@ -66,42 +66,41 @@ function SearchResults({ spotifyApi, chooseTrack }) {
   }, [accessToken]);
 
   // Get Initial Playlists
-  useEffect(() => {
-    if (!accessToken) return;
+  // useEffect(() => {
+  //   if (!accessToken) return;
 
-    spotifyApi.getFeaturedPlaylists({ limit: 10 }).then((res) => {
-      setInitialPlaylists(
-        res.body.playlists.items.map((playlist) => {
-          return {
-            id: playlist.id,
-            name: playlist.name,
-            image: playlist.images[0].url,
-            uri: playlist.uri,
-            owner: playlist.owner
-          }
-        })
-      )
-    })
-  }, [accessToken])
+  //   spotifyApi.getFeaturedPlaylists({ limit: 10}).then((res) => {
+  //     setInitialPlaylists(
+  //       res.body.playlists.items.map((playlist) => {
+  //         return {
+  //           id: playlist.id,
+  //           name: playlist.name,
+  //           image: playlist.images[0].url,
+  //           uri: playlist.uri,
+  //           owner: playlist.owner
+  //         }
+  //       })
+  //     )
+  //   })
+  // }, [accessToken])
 
   // Searched Playlists
-  useEffect(() => {
-    if (!accessToken) return;
-    spotifyApi.searchPlaylists(search).then((res) => {
-      // setPlaylists(res);
-      setPlaylists(
-        res.body.playlists.items.map((playlist) => {
-          return {
-            id: playlist.id,
-            name: playlist.name,
-            uri: playlist.uri,
-            image: playlist.images[0]?.url,
-            owner: playlist.owner.display_name,
-          }
-        })
-      )
-    })
-  }, [search, accessToken])
+  // useEffect(() => {
+  //   if (!accessToken) return;
+  //   spotifyApi.searchPlaylists(search).then((res) => {
+  //     setPlaylists(
+  //       res.body.playlists.items.map((playlist) => {
+  //         return {
+  //           id: playlist.id,
+  //           name: playlist.name,
+  //           uri: playlist.uri,
+  //           image: playlist.images[0]?.url,
+  //           owner: playlist.owner.display_name,
+  //         }
+  //       })
+  //     )
+  //   })
+  // }, [search, accessToken])
 
   // Search Artist
   useEffect(() => {
@@ -155,16 +154,17 @@ function SearchResults({ spotifyApi, chooseTrack }) {
         {/* Mapping through the results */}
         {searchResults.length === 0 ? newReleases.slice(0, 5).map((track) => (
           <Poster
-            key={track.id}
+            id={track.id}
             track={track}
             chooseTrack={chooseTrack}
+            key={track.id}
           />
         )) : searchResults.slice(0, 5).map((track) => (
           <Poster
-            key={track.id}
+            id={track.id}
             track={track}
             chooseTrack={chooseTrack}
-
+            key={track.id}
           />
         ))}
       </div>
@@ -175,14 +175,18 @@ function SearchResults({ spotifyApi, chooseTrack }) {
       <div className='flex flex-row m-2 flex-wrap' >
         {artists.length === 0 ?
           initialArtists?.map((artist) => (
-            <div className='h-50 w-50 hover:bg-gray-800 rounded-lg p-5' id={artist.id} >
+            <div className='h-50 w-50 hover:bg-gray-800 rounded-lg p-5'
+              id={artist.id}
+              key={artist.id}>
               <img className='h-40 w-40 rounded-full object-cover' src={artist.image} />
               <h1 className='text-white font-medium text-center'>{artist.name}</h1>
               <h1 className='text-sm font-medium text-gray-500 text-center'>{artist.type}</h1>
             </div>
           )) :
           artists.slice(0, 5).map((artist) => (
-            <div className='h-50 w-50 hover:bg-gray-800 rounded-lg p-5 ' id={artist.id} >
+            <div className='h-50 w-50 hover:bg-gray-800 rounded-lg p-5 '
+              id={artist.id}
+              key={artist.id} >
               <img className='h-40 w-40 rounded-full object-cover' src={artist.image} />
               <h1 className='text-white font-medium text-center'>{artist.name}</h1>
               <h1 className='text-sm font-medium text-gray-500 text-center'>{artist.type}</h1>
@@ -194,17 +198,17 @@ function SearchResults({ spotifyApi, chooseTrack }) {
       {/* Playlists */}
 
       <h1 className='text-xl font-bold text-white m-5'>Playlists</h1>
-      <div className='flex flex-row m-5 flex-wrap'>
+      {/* <div className='flex flex-row m-5 flex-wrap'>
         {playlists.length === 0 ?
-          initialPlaylists.slice(0, 5).map((playlist) => (
-            <PlaylistCard image={playlist.image} name={playlist.name} id={playlist.id} onwer={playlist.owner} />
+          initialPlaylists.slice(0, 5).map((playlist,index) => (
+            <PlaylistCard image={playlist.image} name={playlist.name} id={playlist.id} onwer={playlist.owner} key={index}/>
           ))
           :
-          playlists.slice(0, 5).map((playlist) => (
-            <PlaylistCard image={playlist.image} name={playlist.name} id={playlist.id} onwer={playlist.owner} />
+          playlists.slice(0, 5).map((playlist,index) => (
+            <PlaylistCard image={playlist.image} name={playlist.name} id={playlist.id} onwer={playlist.owner} key={index}/>
           ))
         }
-      </div>
+      </div> */}
 
     </section>
   )

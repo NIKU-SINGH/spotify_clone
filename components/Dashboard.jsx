@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Body from './SearchResults'
 import Sidebar from './Sidebar'
-import Right from './Right'
 import Home from './Home'
 import Player from './Player'
 import SpotifyWebApi from 'spotify-web-api-node';
@@ -16,11 +15,10 @@ const spotifyApi = new SpotifyWebApi({
   redirectUri: process.env.SPOTIFY_REDIRECT_URI
 });
 
-
 function Dashboard() {
 
   const { data: session } = useSession();
-  const { accessToken } = session;
+  const  accessToken  = session?.accessToken;
 
   const [playingTrack, setPlayingTrack] = useRecoilState(playingTrackState);
 
