@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import Body from './SearchResults'
 import Sidebar from './Sidebar'
-import Right from './Right'
 import Home from './Home'
 import Player from './Player'
 import SpotifyWebApi from 'spotify-web-api-node';
@@ -15,7 +14,6 @@ const spotifyApi = new SpotifyWebApi({
   clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
   redirectUri: process.env.SPOTIFY_REDIRECT_URI
 });
-
 
 function Dashboard() {
 
