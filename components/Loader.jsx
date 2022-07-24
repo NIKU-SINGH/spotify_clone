@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
-import { ThreeBounce } from "better-react-spinkit"; 
+import { ThreeBounce, ChasingDots } from "better-react-spinkit"; 
 
 function Loader() {
   return (
@@ -14,7 +14,7 @@ function Loader() {
             className="animate-pulse"
           />
         </span>
-        <ThreeBounce size={23} color="#15883e" />
+        <ChasingDots size={23} color="#15883e" />
       </div>
     </div>
   )
