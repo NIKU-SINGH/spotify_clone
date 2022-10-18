@@ -1,6 +1,9 @@
 # Spotify Clone
-[Deplyment link](https://spotify-clone-part1.vercel.app/)
+
 ### How to use it
+
+[Deplyment link](https://spotify-clone-part1.vercel.app/)
+
 To use the project use the following credentials
 User Name
 ```
