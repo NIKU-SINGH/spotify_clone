@@ -5,6 +5,7 @@
 [Deplyment link](https://spotify-clone-part1.vercel.app/)
 
 To use the project use the following credentials
+
 User Name
 ```
 Ronald Lewis
