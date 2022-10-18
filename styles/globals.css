@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base{
+    body{
+        @apply bg-black scrollbar-hide;
+    }
+    .croppedIcon {
+        clip-path: inset(0 50% 0 0);
+      }
+    
+      .playerIcon {
+        @apply transition ease-out transform hover:scale-105 hover:text-white;
+      }
+}
