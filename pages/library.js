@@ -3,6 +3,7 @@ import Sidebar from '../components/Sidebar'
 import { signOut, useSession } from 'next-auth/react'
 import { useRouter } from 'next/router'
 import Link from 'next/link';
+import SpotifyWebApi from 'spotify-web-api-node';
 
 const spotifyApi = new SpotifyWebApi({
   clientId: process.env.SPOTIFY_CLIENT_ID,
