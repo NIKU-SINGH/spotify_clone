@@ -1,4 +1,17 @@
 # Spotify Clone
+[Deplyment link](https://spotify-clone-part1.vercel.app/)
+### How to use it
+To use the project use the following credentials
+User Name
+```
+Ronald Lewis
+```
+Password
+```
+@Messi10
+```
+
+
 <table width=33% align="left">
       <tr>
           <td align="center">
